@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 156, 22, 69),
+        backgroundColor: Color.fromARGB(255, 216, 32, 97),
         appBar: AppBar(
           title: Text('Login Sayfası'),
         ),
