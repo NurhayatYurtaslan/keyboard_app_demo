@@ -52,11 +52,9 @@ packages:
   custom_keyboard_action_package:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: d7b67279f07ed0f300b85bd314baeadaeba2fe4e
-      url: "https://github.com/ruveydagunal/custom_keyboard_action_package"
-    source: git
+      path: ".."
+      relative: true
+    source: path
     version: "0.0.1"
   fake_async:
     dependency: transitive

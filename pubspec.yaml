@@ -1,4 +1,4 @@
-name: keyboard_app
+name: example
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -30,10 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   custom_keyboard_action_package:
-    git:
-      url: https://github.com/ruveydagunal/custom_keyboard_action_package
+    path: ../.
+  # custom_keyboard_action_package:
+  #   git:
+  #     url: https://github.com/ruveydagunal/custom_keyboard_action_package
 
   #nurlife_package:
   #git:

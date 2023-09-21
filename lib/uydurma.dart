@@ -1,4 +1,3 @@
-import 'package:custom_keyboard_action_package/custom_keyboard_action_package.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,8 +29,15 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this);
     _focusNode.addListener(_onFocusChange);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    _focusNode.dispose();
+    super.dispose();
   }
 
   void _onFocusChange() {
@@ -41,11 +47,18 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
   }
 
   @override
+  void didChangeMetrics() {
+    final bottomInset = WidgetsBinding.instance!.window.viewInsets.bottom;
+    setState(() {
+      _isKeyboardVisible = bottomInset > 0;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          // CustomKeyboardAction(),
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -56,9 +69,7 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
             child: AnimatedContainer(
               duration: Duration(milliseconds: 100),
               //padding: EdgeInsets.symmetric(vertical: 8.0),
-              width: _isKeyboardVisible
-                  ? MediaQuery.of(context).size.width * 1
-                  : 0.0,
+              width: double.infinity,
               color: Colors.white70,
               height: _isKeyboardVisible
                   ? MediaQuery.of(context).size.height * 0.05
